@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+<p>
+    <a href="{{path('create_group')}}" type="button" class="btn btn-sm btn-success">Create Group</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Group</th>
+      <th scope="col">Users</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for group in groups %}
+    <tr>
+      <td>{{group.name}}</td>   
+      <td>
+      {% if group.users != null %}
+        {% for users in group.users %}
+        {{users}}
+        <a href="{{path('remove_user',{groupId: group.id, userId: loop.index - 1, userName: users})}}" type="button" class="btn btn-sm btn-outline-warning">Remove</a>
+        <br>
+        {% endfor %}
+        </td>
+        <td></td>
+      {% else %}
+        <td>
+        <a href="{{path('delete_group',{id: group.id})}}" type="button" class="btn btn-sm btn-outline-danger">Delete</a>
+        </td>
+      {% endif %}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

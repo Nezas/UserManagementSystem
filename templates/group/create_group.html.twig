@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+<form action="group_list" method="post">
+  <div class="mb-3">
+    <label>Group Name</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <div class="mb-3">
+  </div>
+  <button type="submit" class="btn btn-primary">Create Group</button>
+</form>
+</div>
+{% endblock %}

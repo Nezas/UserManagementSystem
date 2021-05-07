@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+<p>
+    <a href="{{path('add_user')}}" type="button" class="btn btn-sm btn-success">Add User</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Group</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for user in users %}
+    <tr>
+      <td>{{user.getName}}</td>
+      <td>{{user.getGroupName}}</td>
+      <td>
+      <a href="{{path('assign',{id: user.id})}}" type="button" class="btn btn-sm btn-outline-primary">Assign</a>
+      <a href="{{path('delete',{id: user.id})}}" type="button" class="btn btn-sm btn-outline-danger">Delete</a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}
+
